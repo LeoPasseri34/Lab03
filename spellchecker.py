@@ -1,3 +1,5 @@
+import datetime
+import string
 import time
 
 import multiDictionary as md
@@ -5,10 +7,16 @@ import multiDictionary as md
 class SpellChecker:
 
     def __init__(self):
-        pass
+        self.multi = md.MultiDictionary()
 
     def handleSentence(self, txtIn, language):
-        pass
+        tic = datetime.datetime.now()
+        testo = replaceChars(txtIn)
+        sbagliate = md.MultiDictionary().searchWord(testo, language)
+        toc = datetime.datetime.now()
+        print(f"Le parole sbagliate sono {len(sbagliate)} calcolate in {toc-tic}:")
+        for i in sbagliate:
+            print(i)
 
     def printMenu(self):
         print("______________________________\n" +
@@ -23,4 +31,7 @@ class SpellChecker:
 
 
 def replaceChars(text):
-    pass
+    chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
+    for c in chars:
+        text = text.replace(c, "")
+    return text
