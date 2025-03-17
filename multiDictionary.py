@@ -73,67 +73,35 @@ class MultiDictionary:
 
 
     def searchWordDichotomic(self, words, language):
+        dizionario = []
         paroleTrovate = []
-        min = 0
-        max = 0
         if language == "italian":
-            parole = words.split(" ")
-            medio = int(len(self.dizio_ita)/2)
-            for i in parole:
-                if i == self.dizio_ita[medio]:
-                    paroleTrovate.append(i)
-                    print("Parola trovata")
-                elif i > self.dizio_ita[medio]:
-                    max = medio
-                    for p in self.dizio_ita[min:max]:
-                        if p == i:
-                            paroleTrovate.append(i)
-                            print("Parola trovata")
-                elif i < self.dizio_ita[int(medio)]:
-                    min = medio
-                    max = len(self.dizio_ita)
-                    for p in self.dizio_ita[min:max]:
-                        if p == i:
-                            paroleTrovate.append(p)
-                            print("Parola trovata")
-        if language == "english":
-            parole = words.split(" ")
-            medio = int(len(self.dizio_eng)/2)
-            for i in parole:
-                if i == self.dizio_eng[medio]:
-                    paroleTrovate.append(i)
-                    print("Parola trovata")
-                elif i > self.dizio_eng[medio]:
-                    max = medio
-                    for p in self.dizio_eng[min:max]:
-                        if p == i:
-                            paroleTrovate.append(i)
-                            print("Parola trovata")
-                elif i < self.dizio_eng[medio]:
-                    min = medio
-                    max = len(self.dizio_eng)
-                    for p in self.dizio_ita[min:max]:
-                        if p == i:
-                            paroleTrovate.append(p)
-                            print("Parola trovata")
-        if language == "spanish":
-            parole = words.split(" ")
-            medio = int(len(self.dizio_spa)/2)
-            for i in parole:
-                if i == self.dizio_spa[medio]:
-                    paroleTrovate.append(i)
-                    print("Parola trovata")
-                elif i > self.dizio_spa[medio]:
-                    max = medio
-                    for p in self.dizio_spa[min:max]:
-                        if p == i:
-                            paroleTrovate.append(i)
-                            print("Parola trovata")
-                elif i < self.dizio_spa[medio]:
-                    min = medio
-                    max = len(self.dizio_spa)
-                    for p in self.dizio_spa[min:max]:
-                        if p == i:
-                            paroleTrovate.append(p)
-                            print("Parola trovata")
+            dizionario = self.dizio_ita
+        elif language == "english":
+            dizionario = self.dizio_eng
+        elif language == "spanish":
+            dizionario = self.dizio_spa
+
+        parole = words.split(" ")
+        for parola in parole:
+            minimo = 0
+            massimo = len(dizionario)-1
+            trovata = False
+
+            while minimo <= massimo:
+                medio = (massimo+massimo)//2
+                parolaMedia = dizionario[medio]
+
+                if parola == parolaMedia:
+                    trovata = True
+                    paroleTrovate.append(parola)
+                    break
+                elif parola > parolaMedia:
+                    minimo = medio+1
+                else:
+                    massimo = medio-1
+
+            if not trovata:
+                print(f"La parola {parola} non è stata trovata nel dizionario")
+
         return paroleTrovate

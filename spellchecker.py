@@ -17,8 +17,6 @@ class SpellChecker:
         print(f"Le parole sbagliate sono {len(sbagliate)} calcolate in {toc-tic}:")
         for i in sbagliate:
             print(i)
-        print("-----------------------------------")
-        print("-----------------------------------")
 
     def handleSentenceLinear(self, txtIn, language):
         tic = datetime.datetime.now()
@@ -35,8 +33,7 @@ class SpellChecker:
         parolaTrovata = md.MultiDictionary().searchWordDichotomic(testo, language)
         toc = datetime.datetime.now()
         print(f"Le parole trovate con la ricerca dicotomica in {toc - tic} sono:")
-        for p in parolaTrovata:
-            print(p)
+        return parolaTrovata
 
     def printMenu(self):
         print("______________________________\n" +

@@ -12,7 +12,9 @@ while(True):
         print("Inserisci la tua frase in Italiano\n")
         txtIn = input().lower()
         sc.handleSentence(txtIn,"italian")
+        print("-------------------------------------")
         sc.handleSentenceLinear(txtIn,"italian")
+        print("-------------------------------------")
         sc.handleSentenceDichotomic(txtIn,"italian")
         continue
 
@@ -20,7 +22,9 @@ while(True):
         print("Inserisci la tua frase in Inglese\n")
         txtIn = input().lower()
         sc.handleSentence(txtIn,"english")
+        print("-------------------------------------")
         sc.handleSentenceLinear(txtIn,"english")
+        print("-------------------------------------")
         sc.handleSentenceDichotomic(txtIn,"english")
         continue
 
@@ -28,7 +32,9 @@ while(True):
         print("Inserisci la tua frase in Spagnolo\n")
         txtIn = input().lower()
         sc.handleSentence(txtIn,"spanish")
+        print("-------------------------------------")
         sc.handleSentenceLinear(txtIn,"spanish")
+        print("-------------------------------------")
         sc.handleSentenceDichotomic(txtIn,"spanish")
         continue
 
